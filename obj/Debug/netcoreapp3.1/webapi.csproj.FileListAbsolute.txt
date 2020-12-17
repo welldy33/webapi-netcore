@@ -6,7 +6,6 @@ D:\WelldyNew\API\webapi\webapi\bin\Debug\netcoreapp3.1\webapi.runtimeconfig.json
 D:\WelldyNew\API\webapi\webapi\bin\Debug\netcoreapp3.1\webapi.runtimeconfig.dev.json
 D:\WelldyNew\API\webapi\webapi\bin\Debug\netcoreapp3.1\webapi.dll
 D:\WelldyNew\API\webapi\webapi\bin\Debug\netcoreapp3.1\webapi.pdb
-D:\WelldyNew\API\webapi\webapi\obj\Debug\netcoreapp3.1\webapi.csprojAssemblyReference.cache
 D:\WelldyNew\API\webapi\webapi\obj\Debug\netcoreapp3.1\webapi.AssemblyInfoInputs.cache
 D:\WelldyNew\API\webapi\webapi\obj\Debug\netcoreapp3.1\webapi.AssemblyInfo.cs
 D:\WelldyNew\API\webapi\webapi\obj\Debug\netcoreapp3.1\webapi.csproj.CoreCompileInputs.cache
@@ -18,3 +17,17 @@ D:\WelldyNew\API\webapi\webapi\obj\Debug\netcoreapp3.1\webapi.RazorTargetAssembl
 D:\WelldyNew\API\webapi\webapi\obj\Debug\netcoreapp3.1\webapi.dll
 D:\WelldyNew\API\webapi\webapi\obj\Debug\netcoreapp3.1\webapi.pdb
 D:\WelldyNew\API\webapi\webapi\obj\Debug\netcoreapp3.1\webapi.genruntimeconfig.cache
+D:\WelldyNew\API\webapi\webapi\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\WelldyNew\API\webapi\webapi\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+D:\WelldyNew\API\webapi\webapi\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+D:\WelldyNew\API\webapi\webapi\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+D:\WelldyNew\API\webapi\webapi\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+D:\WelldyNew\API\webapi\webapi\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\WelldyNew\API\webapi\webapi\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\WelldyNew\API\webapi\webapi\obj\Debug\netcoreapp3.1\webapi.csproj.CopyComplete
+D:\WelldyNew\API\webapi\webapi\bin\Debug\netcoreapp3.1\DBHelper.dll
+D:\WelldyNew\API\webapi\webapi\bin\Debug\netcoreapp3.1\DBHelper.pdb
+D:\WelldyNew\API\webapi\webapi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+D:\WelldyNew\API\webapi\webapi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\WelldyNew\API\webapi\webapi\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+D:\WelldyNew\API\webapi\webapi\obj\Debug\netcoreapp3.1\webapi.csprojAssemblyReference.cache
