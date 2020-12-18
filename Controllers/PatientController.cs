@@ -43,9 +43,9 @@ namespace webapi.Controllers
                 SELECT * FROM mos_patient where gender=@gen","DEV",Tool.ToDic("GEn","M")));
             return ret;
         }
-        [HttpGet]
+        [HttpPut]
         [Route("[action]")]
-        public List<Dictionary<string,object>> QueryFile() {
+        public List<Dictionary<string,object>> QueryFile(Dictionary<string,object>arg) {
             //var a = _hostingEnv.WebRootPath;
             //var fileName = Path.GetFileName("GetAllData.sql");
             //var filePath = Path.Combine(_hostingEnv.WebRootPath, "_service\\_sqlHelper\\Patient\\", fileName);
@@ -53,7 +53,7 @@ namespace webapi.Controllers
          
             // HttpContext.Request.Host;// Current.Server.MapPath("/UploadedFiles");
             var host = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
-            return Tool.ToListDic(DBHelper.Query("Patient.GetAllData.DEV", Tool.ToDic("GEn", "M"), _hostingEnv));
+            return Tool.ToListDic(DBHelper.Query("Patient.GetAllData.DEV", arg, _hostingEnv));
         }
     }
 }
