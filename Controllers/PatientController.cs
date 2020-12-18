@@ -4,9 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DBHelper;
+using Helper;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web;
+using System.IO;
+using System.Reflection;
+using Microsoft.AspNetCore.Hosting;
 
 namespace webapi.Controllers
 {
@@ -14,7 +18,12 @@ namespace webapi.Controllers
     [Route("[controller]")]
     public class PatientController : ControllerBase
     {
+        private readonly IHostingEnvironment _hostingEnv;
         // GET: PatientController
+        public PatientController(IHostingEnvironment hostingEnv)
+        {
+            _hostingEnv = hostingEnv;
+        }
         public void Connection()
         {
             SqlConnectionStringBuilder sConnB = new SqlConnectionStringBuilder()
@@ -29,10 +38,22 @@ namespace webapi.Controllers
         [HttpGet]
         public List<Dictionary<string,object>> Index()
         {
-            DataSet ds = new DataSet();
-            ds.Tables.Add(Instance.Query());
-            return Tool.ToListDic(ds);
+            
+            List<Dictionary<string, object>> ret = Tool.ToListDic(DBHelper.Query(@"
+                SELECT * FROM mos_patient where gender=@gen","DEV",Tool.ToDic("GEn","M")));
+            return ret;
         }
-      
+        [HttpGet]
+        [Route("[action]")]
+        public List<Dictionary<string,object>> QueryFile() {
+            //var a = _hostingEnv.WebRootPath;
+            //var fileName = Path.GetFileName("GetAllData.sql");
+            //var filePath = Path.Combine(_hostingEnv.WebRootPath, "_service\\_sqlHelper\\Patient\\", fileName);
+            //string sqlStr = System.IO.File.ReadAllText(filePath);
+         
+            // HttpContext.Request.Host;// Current.Server.MapPath("/UploadedFiles");
+            var host = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
+            return Tool.ToListDic(DBHelper.Query("Patient.GetAllData.DEV", Tool.ToDic("GEn", "M"), _hostingEnv));
+        }
     }
 }

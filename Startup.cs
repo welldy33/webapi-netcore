@@ -18,6 +18,7 @@ namespace webapi
     {
         public Startup(IConfiguration configuration)
         {
+            var contentRoot = configuration.GetValue<string>(WebHostDefaults.ContentRootKey);
             Configuration = configuration;
         }
 
