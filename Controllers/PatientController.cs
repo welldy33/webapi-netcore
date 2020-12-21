@@ -5,6 +5,8 @@ using System.Linq;
 using Helper;
 using System.Data.SqlClient;
 using Microsoft.AspNetCore.Hosting;
+using System;
+using webapi.Models;
 
 namespace webapi.Controllers
 {
@@ -12,14 +14,19 @@ namespace webapi.Controllers
     [Route("[controller]")]
     public class PatientController : ControllerBase
     {
+        private readonly ILoggerManager _logger;
+        [Obsolete]
         private readonly IHostingEnvironment _hostingEnv;
 
         // GET: PatientController
-        [System.Obsolete]
-        public PatientController(IHostingEnvironment hostingEnv)
+        [Obsolete]
+        public PatientController(IHostingEnvironment hostingEnv, ILoggerManager logger)
         {
             _hostingEnv = hostingEnv;
+            _logger = logger;
         }
+
+
         public void Connection()
         {
             SqlConnectionStringBuilder sConnB = new SqlConnectionStringBuilder()
@@ -41,15 +48,26 @@ namespace webapi.Controllers
         }
         [HttpPut]
         [Route("[action]")]
+        [Obsolete]
         public List<Dictionary<string,object>> QueryFile(Dictionary<string,object>arg) {
             //var a = _hostingEnv.WebRootPath;
             //var fileName = Path.GetFileName("GetAllData.sql");
             //var filePath = Path.Combine(_hostingEnv.WebRootPath, "_service\\_sqlHelper\\Patient\\", fileName);
             //string sqlStr = System.IO.File.ReadAllText(filePath);
-         
+
             // HttpContext.Request.Host;// Current.Server.MapPath("/UploadedFiles");
-            var host = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
+            throw new CustomsException("Cannot Query Now");
             return Tool.ToListDic(DBHelper.Query("Patient.GetAllData.DEV", arg, _hostingEnv));
+        }
+        [HttpGet]
+        [Route("[action]")]
+        public IEnumerable<string> GetLog()
+        {
+            _logger.LogInfo("Here is info message from the controller.");
+            _logger.LogDebug("Here is debug message from the controller.");
+            _logger.LogWarn("Here is warn message from the controller.");
+            _logger.LogError("Here is error message from the controller.");
+            return new string[] { "value1", "value2" };
         }
         [HttpPost]
         public void SaveNewData (Dictionary<string,object>arg){

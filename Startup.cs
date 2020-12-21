@@ -11,6 +11,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using NLog;
+using System.IO;
+using webapi.Extensions;
 
 namespace webapi
 {
@@ -18,6 +21,7 @@ namespace webapi
     {
         public Startup(IConfiguration configuration)
         {
+            LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
             var contentRoot = configuration.GetValue<string>(WebHostDefaults.ContentRootKey);
             Configuration = configuration;
         }
@@ -41,7 +45,7 @@ namespace webapi
                         .AllowAnyHeader();
                     });
             });
-
+            services.ConfigureLoggerService();
             services.AddControllers();
         }
 
@@ -52,6 +56,7 @@ namespace webapi
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseStatusCodePages();
 
             app.UseHttpsRedirection();
 
