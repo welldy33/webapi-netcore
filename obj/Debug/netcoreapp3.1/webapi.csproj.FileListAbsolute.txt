@@ -35,4 +35,3 @@ D:\WelldyNew\API\webapi\webapi\bin\Debug\netcoreapp3.1\libman.json
 D:\WelldyNew\API\webapi\webapi\bin\Debug\netcoreapp3.1\NLog.dll
 D:\WelldyNew\API\webapi\webapi\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
 D:\WelldyNew\API\webapi\webapi\bin\Debug\netcoreapp3.1\nlog.config
-D:\WelldyNew\API\webapi\webapi\obj\Debug\netcoreapp3.1\webapi.csprojAssemblyReference.cache

@@ -3,12 +3,19 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using System.Net;
+using webapi.CustomExceptionMiddleware;
+
 namespace webapi.Extensions
 {
     public static class ExceptionMiddlewareExtensions
     {
-        public static void ConfigureExceptionHandler(this IApplicationBuilder app)
+        public static void ConfigureCustomExceptionMiddleware(this IApplicationBuilder app)
         {
+            app.UseMiddleware<ExceptionMiddleware>();
+        }
+        public static void ConfigureExceptionHandler(this IApplicationBuilder app, ILoggerManager logger)
+        {
+
             app.UseExceptionHandler(appError =>
             {
                 appError.Run(async context =>

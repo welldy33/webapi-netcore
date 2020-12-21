@@ -69,6 +69,19 @@ namespace webapi.Controllers
             _logger.LogError("Here is error message from the controller.");
             return new string[] { "value1", "value2" };
         }
+        [HttpGet]
+        [Route("[action]")]
+        [Obsolete]
+        public IActionResult Throw()
+        {
+
+            _logger.LogInfo("Fetching all the Students from the storage");
+            var students = Tool.ToListDic(DBHelper.Query("Patient.GetAllData.DEV", Tool.ToDic("GEn", "M"), _hostingEnv)); //simulation for the data base access
+            throw new Exception("Exception while fetching all the students from the storage.");
+            _logger.LogInfo($"Returning {students.Count} students.");
+            return Ok(students);
+           
+        }
         [HttpPost]
         public void SaveNewData (Dictionary<string,object>arg){
             DBHelper.Execute("Insert#mos_patient@DEV", arg);
