@@ -1,15 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Helper;
-using System.Data;
 using System.Data.SqlClient;
-using System.Web;
-using System.IO;
-using System.Reflection;
 using Microsoft.AspNetCore.Hosting;
 
 namespace webapi.Controllers
@@ -19,7 +13,9 @@ namespace webapi.Controllers
     public class PatientController : ControllerBase
     {
         private readonly IHostingEnvironment _hostingEnv;
+
         // GET: PatientController
+        [System.Obsolete]
         public PatientController(IHostingEnvironment hostingEnv)
         {
             _hostingEnv = hostingEnv;
@@ -54,6 +50,10 @@ namespace webapi.Controllers
             // HttpContext.Request.Host;// Current.Server.MapPath("/UploadedFiles");
             var host = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
             return Tool.ToListDic(DBHelper.Query("Patient.GetAllData.DEV", arg, _hostingEnv));
+        }
+        [HttpPost]
+        public void SaveNewData (Dictionary<string,object>arg){
+            DBHelper.Execute("Insert#mos_patient@DEV", arg);
         }
     }
 }
